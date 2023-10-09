@@ -3,6 +3,7 @@ import { FormTitle } from "../shared/FormTitle";
 import Button from "../shared/Button";
 import toast from "react-hot-toast";
 import { useCreateStudentMutation } from "../../redux/features/api/baseApi";
+import { BiImageAdd } from "react-icons/bi";
 
 const classOptions = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
 
@@ -13,6 +14,8 @@ const AddStudent = () => {
     class: classOptions[0],
     image: null, // Initialize the 'image' field with null// Default to the first class option
   });
+
+  const [message, setMessage] = useState("select image");
 
   const [createStudent, { isLoading, isSuccess }] = useCreateStudentMutation();
 
@@ -57,12 +60,18 @@ const AddStudent = () => {
       });
     }
   }, [isSuccess]);
+
+  useEffect(() => {
+    if (formData.image) {
+      setMessage("successfully image selected");
+    }
+  }, [formData.image]);
   return (
-    <div className="min-h-screen  w-full grid place-content-center">
+    <div className="min-h-screen ">
       <FormTitle title={"Add Student information"} />
       <form
         onSubmit={handleSubmit}
-        className="max-w-screen-md w-full mx-auto bg-white p-3 rounded-md drop-shadow-md flex flex-col"
+        className="max-w-screen-md w-full mx-auto bg-white p-3 rounded-md drop-shadow-sm flex flex-col"
       >
         <div className="mb-4">
           <label
@@ -77,12 +86,11 @@ const AddStudent = () => {
             name="name"
             value={formData.name}
             onChange={handleChange}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            required
+            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
         </div>
 
-        <div className="mb-4">
+        {/* <div className="mb-4">
           <label
             htmlFor="image"
             className="block text-gray-700 text-sm font-bold mb-2"
@@ -94,9 +102,9 @@ const AddStudent = () => {
             id="image"
             name="image"
             onChange={handleFileChange}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
-        </div>
+        </div> */}
         <div className="mb-4">
           <label
             htmlFor="class"
@@ -109,7 +117,7 @@ const AddStudent = () => {
             name="class"
             value={formData.class}
             onChange={handleChange}
-            className="shadow  border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className=" border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           >
             {classOptions.map((cls) => (
               <option key={cls} value={cls}>
@@ -131,9 +139,34 @@ const AddStudent = () => {
             name="roll"
             value={formData.roll}
             onChange={handleChange}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            required
+            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
+        </div>
+        <div className="mb-4">
+          <label
+            htmlFor="image"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            image
+          </label>
+
+          <label
+            htmlFor="image"
+            className="border-2 border-zinc-100 w-full  rounded-[4px] p-4 min-h-[30vh] grid place-items-center"
+          >
+            <input
+              hidden
+              type="file" // Use type 'file' for image upload
+              id="image"
+              name="image"
+              onChange={handleFileChange}
+              className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            />
+            <div>
+              <BiImageAdd size={40} className=" w-max mx-auto" />
+              <h4>{message}</h4>
+            </div>
+          </label>
         </div>
 
         <div className="text-center">

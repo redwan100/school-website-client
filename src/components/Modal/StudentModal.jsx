@@ -5,6 +5,7 @@ import {
   useGetSingleStudentQuery,
   useUpdateStudentMutation,
 } from "../../redux/features/api/baseApi";
+import toast from "react-hot-toast";
 
 const StudentModal = ({ isEditOpen, setIsEditOpen, id, refetch }) => {
   const classOptions = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
@@ -37,6 +38,7 @@ const StudentModal = ({ isEditOpen, setIsEditOpen, id, refetch }) => {
       closeModal();
       refetch();
       singleRefetch();
+      toast.success("Update successful");
     } catch (err) {
       console.log(err);
     }

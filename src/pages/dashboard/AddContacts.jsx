@@ -40,11 +40,11 @@ const AddContacts = () => {
   }, [isSuccess]);
 
   return (
-    <div className="min-h-screen w-full grid place-content-center">
+    <div className="min-h-screen w-full ">
       <FormTitle title={"add contact information"} />
       <form
         onSubmit={handleSubmit}
-        className="max-w-screen-md w-full mx-auto bg-white p-3 rounded-md drop-shadow-md flex flex-col"
+        className="max-w-screen-md w-full mx-auto bg-white p-3 rounded-md drop-shadow-sm flex flex-col"
       >
         <div className="mb-4">
           <label
@@ -59,7 +59,7 @@ const AddContacts = () => {
             name="address"
             value={formData.address}
             onChange={handleChange}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             required
           />
         </div>
@@ -76,7 +76,7 @@ const AddContacts = () => {
             name="phone"
             value={formData.phone}
             onChange={handleChange}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             required
           />
         </div>
@@ -93,7 +93,7 @@ const AddContacts = () => {
             name="email"
             value={formData.email}
             onChange={handleChange}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             required
           />
         </div>

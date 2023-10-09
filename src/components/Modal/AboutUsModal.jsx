@@ -5,6 +5,7 @@ import {
   useGetSingleAboutQuery,
   useUpdateAboutMutation,
 } from "../../redux/features/api/baseApi";
+import toast from "react-hot-toast";
 
 const AboutUsModal = ({ isEditOpen, setIsEditOpen, id, refetch }) => {
   const [message, setMessage] = useState("");
@@ -28,6 +29,8 @@ const AboutUsModal = ({ isEditOpen, setIsEditOpen, id, refetch }) => {
       closeModal();
       refetch();
       singleRefetch();
+      toast.success("Update successful");
+      setIsEditOpen(false);
     } catch (err) {
       console.log(err);
     }

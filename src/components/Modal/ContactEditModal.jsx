@@ -6,6 +6,7 @@ import {
   useUpdateCommunicationMutation,
 } from "../../redux/features/api/baseApi";
 
+import toast from "react-hot-toast";
 const ContactEditModal = ({ isEditOpen, setIsEditOpen, id, refetch }) => {
   const [formData, setFormData] = useState({
     address: "",
@@ -33,9 +34,11 @@ const ContactEditModal = ({ isEditOpen, setIsEditOpen, id, refetch }) => {
     e.preventDefault();
     try {
       await update({ data: formData, id });
-      closeModal();
+
       refetch();
       singleRefetch();
+      toast.success("Updated successful");
+      closeModal();
     } catch (error) {
       console.log(error);
     }

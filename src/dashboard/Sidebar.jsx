@@ -3,6 +3,7 @@ import { RiDashboardLine } from "react-icons/ri";
 import { PiGraduationCapFill } from "react-icons/pi";
 import { BsFillPeopleFill } from "react-icons/bs";
 import { FaRegAddressBook } from "react-icons/fa";
+import { PiExamLight } from "react-icons/pi";
 import { NavLink } from "react-router-dom";
 
 const links = [
@@ -40,7 +41,7 @@ const links = [
     id: 363363443,
     name: "add exam result",
     path: "/dashboard/add-exam-result",
-    icon: FaRegAddressBook,
+    icon: PiExamLight,
   },
 ];
 
@@ -79,7 +80,7 @@ const dashLink = [
     id: 3634353343,
     name: "Exam Result",
     path: "/dashboard/result",
-    icon: FaRegAddressBook,
+    icon: PiExamLight,
   },
 ];
 

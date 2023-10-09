@@ -1,10 +1,13 @@
-import { useState } from "react";
-import Button from "../shared/Button";
-import { FormTitle } from "../shared/FormTitle";
-import { useCreateResultMutation } from "../../redux/features/api/baseApi";
 import toast from "react-hot-toast";
+import Button from "../../pages/shared/Button";
+import Modal from "./Modal";
+import { useState } from "react";
+import {
+  useGetSingleResultQuery,
+  useUpdateResultMutation,
+} from "../../redux/features/api/baseApi";
 
-const AddExamResult = () => {
+const ResultModal = ({ isEditOpen, setIsEditOpen, id, refetch }) => {
   const [formData, setFormData] = useState({
     name: "",
     subject: "",
@@ -13,7 +16,8 @@ const AddExamResult = () => {
     class: "1", // Default class value
   });
 
-  const [createResult] = useCreateResultMutation();
+  const { data, refetch: singleRefetch } = useGetSingleResultQuery(id);
+  const [updateResult] = useUpdateResultMutation();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -26,15 +30,21 @@ const AddExamResult = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await createResult(formData);
-      toast.success("Success Result Created");
+      await updateResult({ formData, id });
+      refetch();
+      singleRefetch();
+      setIsEditOpen(false);
+      toast.success("Update success");
     } catch (error) {
       console.log(error);
     }
   };
   return (
-    <div className="max-w-screen-md w-full mx-auto">
-      <FormTitle title={"Add Exam Result"} />
+    <Modal
+      title={"Edit Result"}
+      isEditOpen={isEditOpen}
+      setIsEditOpen={setIsEditOpen}
+    >
       <div className="bg-white p-8 rounded-lg shadow-sm">
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
@@ -48,7 +58,7 @@ const AddExamResult = () => {
               type="text"
               id="name"
               name="name"
-              value={formData.name}
+              defaultValue={data?.name}
               onChange={handleChange}
               className="w-full mt-1 px-3 py-2 border rounded-md border-gray-300 focus:outline-none focus:border-blue-500"
             />
@@ -64,7 +74,7 @@ const AddExamResult = () => {
             <select
               id="class"
               name="class"
-              value={formData.class}
+              defaultValue={data?.class}
               onChange={handleChange}
               className="w-full mt-1 px-3 py-2 border rounded-md border-gray-300 focus:outline-none focus:border-blue-500"
             >
@@ -86,7 +96,7 @@ const AddExamResult = () => {
               type="text"
               id="subject"
               name="subject"
-              value={formData.subject}
+              defaultValue={data?.subject}
               onChange={handleChange}
               className="w-full mt-1 px-3 py-2 border rounded-md border-gray-300 focus:outline-none focus:border-blue-500"
             />
@@ -103,7 +113,7 @@ const AddExamResult = () => {
               type="text"
               id="group"
               name="group"
-              value={formData.group}
+              defaultValue={data?.group}
               onChange={handleChange}
               className="w-full mt-1 px-3 py-2 border rounded-md border-gray-300 focus:outline-none focus:border-blue-500"
             />
@@ -121,7 +131,7 @@ const AddExamResult = () => {
               min={0}
               max={100}
               name="number"
-              value={formData.number}
+              defaultValue={data?.number}
               onChange={handleChange}
               className="w-full mt-1 px-3 py-2 border rounded-md border-gray-300 focus:outline-none focus:border-blue-500"
             />
@@ -131,8 +141,8 @@ const AddExamResult = () => {
           </div>
         </form>
       </div>
-    </div>
+    </Modal>
   );
 };
 
-export default AddExamResult;
+export default ResultModal;

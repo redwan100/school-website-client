@@ -21,7 +21,7 @@ const AddAboutUs = () => {
   }, [isSuccess]);
 
   return (
-    <div className="min-h-screen w-full grid place-content-center">
+    <div className="min-h-screen w-full">
       <FormTitle title={"About us"} />
       <form
         onSubmit={handleSubmit}

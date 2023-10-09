@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDeleteResultMutation } from "../../../../redux/features/api/baseApi";
 import DeleteModal from "../../../Modal/DeleteModal";
+import ResultModal from "../../../Modal/ResultModal";
 
 const ExamResultRow = ({ result, refetch }) => {
   const { _id, name, subject, group, number, class: studentClass } = result;
@@ -72,6 +73,13 @@ const ExamResultRow = ({ result, refetch }) => {
         closeModal={closeModal}
         isOpen={isOpen}
         modalHandler={modalHandler}
+      />
+
+      <ResultModal
+        id={_id}
+        isEditOpen={isEditOpen}
+        setIsEditOpen={setIsEditOpen}
+        refetch={refetch}
       />
     </tr>
   );

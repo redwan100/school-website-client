@@ -4,7 +4,7 @@ import {
   useGetSingleNoticeQuery,
   useUpdateNoticeMutation,
 } from "../../redux/features/api/baseApi";
-
+import toast from "react-hot-toast";
 const NoticeModal = ({ isEditOpen, setIsEditOpen, id, refetch }) => {
   const [noticeName, setNoticeName] = useState("");
 
@@ -24,7 +24,7 @@ const NoticeModal = ({ isEditOpen, setIsEditOpen, id, refetch }) => {
 
     try {
       await updateNotice({ noticeName, id });
-
+      toast.success("Updated successful");
       closeModal();
       singleRefetch();
       refetch();
