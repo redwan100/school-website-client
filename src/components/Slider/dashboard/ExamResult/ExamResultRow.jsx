@@ -1,19 +1,18 @@
 import { useState } from "react";
+import { useDeleteResultMutation } from "../../../../redux/features/api/baseApi";
 import DeleteModal from "../../../Modal/DeleteModal";
-import { useDeleteStudentMutation } from "../../../../redux/features/api/baseApi";
-import StudentModal from "../../../Modal/StudentModal";
 
-const StudentRow = ({ student, refetch }) => {
-  const { _id, avatar, name, class: studentClass, roll } = student;
-
-  const [deleteStudent] = useDeleteStudentMutation();
+const ExamResultRow = ({ result, refetch }) => {
+  const { _id, name, subject, group, number, class: studentClass } = result;
 
   const [isOpen, setIsOpen] = useState(false);
   const [isEditOpen, setIsEditOpen] = useState(false);
 
+  const [deleteResult] = useDeleteResultMutation();
+
   const modalHandler = (id) => {
     try {
-      deleteStudent(id);
+      deleteResult(id);
       refetch();
     } catch (error) {
       console.log(error);
@@ -23,23 +22,21 @@ const StudentRow = ({ student, refetch }) => {
   const closeModal = () => {
     setIsOpen(false);
   };
-
   return (
     <tr className="odd:bg-zinc-300 hover:bg-zinc-400 hover:text-white transition">
-      <td className="px-6 py-2">
-        <div className="flex items-center">
-          <div className="flex-shrink-0 h-12 w-12">
-            <img
-              className="h-full w-full rounded-md border border-zinc-400 block object-cover"
-              src={`${import.meta.env.VITE_BASE_URL}/${avatar}`}
-              alt={`Image of ${name}`}
-            />
-          </div>
+      <td className="px-6 py-4 whitespace-nowrap">
+        <div className="text-sm sm:text-base md:text-lg text-gray-900">
+          {name}
         </div>
       </td>
       <td className="px-6 py-4 whitespace-nowrap">
         <div className="text-sm sm:text-base md:text-lg text-gray-900">
-          {name}
+          {subject}
+        </div>
+      </td>
+      <td className="px-6 py-4 whitespace-nowrap">
+        <div className="text-sm sm:text-base md:text-lg text-gray-900">
+          {group}
         </div>
       </td>
       <td className="px-6 py-4 whitespace-nowrap">
@@ -49,7 +46,7 @@ const StudentRow = ({ student, refetch }) => {
       </td>
       <td className="px-6 py-4 whitespace-nowrap">
         <div className="text-sm sm:text-base md:text-lg text-gray-900">
-          {roll}
+          {number}
         </div>
       </td>
       <td className="px-6 py-4  text-sm sm:text-base md:text-lg text-gray-500 flex flex-col gap-2 sm:flex-row text-right w-max mx-auto">
@@ -76,15 +73,8 @@ const StudentRow = ({ student, refetch }) => {
         isOpen={isOpen}
         modalHandler={modalHandler}
       />
-
-      <StudentModal
-        id={_id}
-        isEditOpen={isEditOpen}
-        setIsEditOpen={setIsEditOpen}
-        refetch={refetch}
-      />
     </tr>
   );
 };
 
-export default StudentRow;
+export default ExamResultRow;

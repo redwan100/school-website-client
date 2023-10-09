@@ -51,7 +51,6 @@ const AddExamResult = () => {
               value={formData.name}
               onChange={handleChange}
               className="w-full mt-1 px-3 py-2 border rounded-md border-gray-300 focus:outline-none focus:border-blue-500"
-              required
             />
           </div>
 
@@ -90,7 +89,6 @@ const AddExamResult = () => {
               value={formData.subject}
               onChange={handleChange}
               className="w-full mt-1 px-3 py-2 border rounded-md border-gray-300 focus:outline-none focus:border-blue-500"
-              required
             />
           </div>
 
@@ -108,7 +106,6 @@ const AddExamResult = () => {
               value={formData.group}
               onChange={handleChange}
               className="w-full mt-1 px-3 py-2 border rounded-md border-gray-300 focus:outline-none focus:border-blue-500"
-              required
             />
           </div>
           <div className="mb-4">
@@ -122,12 +119,10 @@ const AddExamResult = () => {
               type="number"
               id="number"
               min={0}
-              max={100}
               name="number"
               value={formData.number}
               onChange={handleChange}
               className="w-full mt-1 px-3 py-2 border rounded-md border-gray-300 focus:outline-none focus:border-blue-500"
-              required
             />
           </div>
           <div>

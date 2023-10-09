@@ -1,11 +1,9 @@
 import { useEffect } from "react";
-import { useGetStudentsQuery } from "../../../../redux/features/api/baseApi";
-import StudentRow from "./StudentRow";
+import { useGetResultQuery } from "../../../../redux/features/api/baseApi";
+import ExamResultRow from "./ExamResultRow";
 
-
-const StudentTable = () => {
-  const { data: studentInfo, refetch, isSuccess } = useGetStudentsQuery();
-
+const ExamResultTable = () => {
+  const { data: results, refetch, isSuccess } = useGetResultQuery();
   useEffect(() => {
     if (isSuccess) {
       refetch();
@@ -13,7 +11,7 @@ const StudentTable = () => {
   }, [isSuccess]);
   return (
     <div>
-      {studentInfo && Array.isArray(studentInfo) && studentInfo.length > 0 ? (
+      {results && Array.isArray(results) && results.length > 0 ? (
         <>
           <div className="overflow-x-auto bg-zinc-200 ">
             <table className="min-w-full divide-y divide-gray-200">
@@ -23,13 +21,19 @@ const StudentTable = () => {
                     scope="col"
                     className="px-6 py-3 text-left text-xs sm:text-base font-bold  uppercase tracking-wider"
                   >
-                    image
+                    name
                   </th>
                   <th
                     scope="col"
                     className="px-6 py-3 text-left text-xs sm:text-base font-bold  uppercase tracking-wider"
                   >
-                    Name
+                    subject
+                  </th>
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-left text-xs sm:text-base font-bold  uppercase tracking-wider"
+                  >
+                    group
                   </th>
                   <th
                     scope="col"
@@ -41,7 +45,7 @@ const StudentTable = () => {
                     scope="col"
                     className="px-6 py-3 text-left text-xs sm:text-base font-bold  uppercase tracking-wider"
                   >
-                    Roll
+                    number
                   </th>
                   <th
                     scope="col"
@@ -52,12 +56,8 @@ const StudentTable = () => {
                 </tr>
               </thead>
               <tbody>
-                {studentInfo.map((student) => (
-                  <StudentRow
-                    key={student.id}
-                    student={student}
-                    refetch={refetch}
-                  />
+                {results.map((res) => (
+                  <ExamResultRow key={res._id} result={res} refetch={refetch} />
                 ))}
               </tbody>
             </table>
@@ -74,4 +74,4 @@ const StudentTable = () => {
   );
 };
 
-export default StudentTable;
+export default ExamResultTable;
