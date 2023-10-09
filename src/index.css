@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-zinc-50;
+}
+
+.active {
+  @apply bg-green-700 text-green-50 rounded-md drop-shadow-md py-1 px-2 w-full block;
+}
+
+.sidebarActive {
+  @apply bg-stone-600 rounded-sm drop-shadow-md text-stone-50;
+}
