@@ -55,6 +55,9 @@ const MobileMenu = ({ showMenu, toggleMenu }) => {
         className="absolute w-10 h-10 bg-primary-10 text-zinc-50 rounded-full p-2 cursor-pointer top-1/2 -left-4 -translate-y-1/2 drop-shadow-md border border-green-500"
       />
       <div className="flex flex-col gap-3 w-1/2 mx-auto">
+        <li className="list-none text-zinc-50 uppercase text-sm md:text-base rounded-md hover:bg-green-700 py-2 px-3 transition-all border-2 border-stone-300 text-center bg-stone-600">
+          <NavLink to={"/dashboard"}>Dashboard</NavLink>
+        </li>
         {navmenu.map((menu) => (
           <li
             key={menu.id}

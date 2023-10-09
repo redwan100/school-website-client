@@ -68,7 +68,9 @@ const Navbar = () => {
               </NavLink>
             </li>
           ))}
-
+          <li className="list-none text-zinc-50 uppercase text-sm md:text-base rounded-md hidden lg:block hover:bg-green-700 py-1 px-2 transition-all  bg-slate-500">
+            <NavLink to={"/dashboard"}>Dashboard</NavLink>
+          </li>
           <HiOutlineMenuAlt2
             onClick={toggleMenu}
             className="text-zinc-50 text-xl cursor-pointer ml-auto block lg:hidden"

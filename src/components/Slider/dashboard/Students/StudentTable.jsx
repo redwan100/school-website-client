@@ -1,16 +1,26 @@
 import { useEffect } from "react";
 import { useGetStudentsQuery } from "../../../../redux/features/api/baseApi";
 import StudentRow from "./StudentRow";
-
+import PageLoader from "../../../../pages/shared/PageLoader";
 
 const StudentTable = () => {
-  const { data: studentInfo, refetch, isSuccess } = useGetStudentsQuery();
+  const {
+    data: studentInfo,
+    refetch,
+    isSuccess,
+    isLoading,
+  } = useGetStudentsQuery();
 
   useEffect(() => {
     if (isSuccess) {
       refetch();
     }
   }, [isSuccess]);
+
+  if (isLoading) {
+    return <PageLoader />;
+  }
+
   return (
     <div>
       {studentInfo && Array.isArray(studentInfo) && studentInfo.length > 0 ? (
