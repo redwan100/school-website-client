@@ -224,4 +224,9 @@ export const {
   useGetSingleAboutQuery,
   useUpdateAboutMutation,
   useDeleteAboutMutation,
+  useGetResultQuery,
+  useGetSingleResultQuery,
+  useUpdateResultMutation,
+  useCreateResultMutation,
+  useDeleteResultMutation,
 } = baseApi;

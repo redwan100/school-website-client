@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Button from "../shared/Button";
 import { FormTitle } from "../shared/FormTitle";
+import { useCreateResultMutation } from "../../redux/features/api/baseApi";
+import toast from "react-hot-toast";
 
 const AddExamResult = () => {
   const [formData, setFormData] = useState({
@@ -8,7 +10,10 @@ const AddExamResult = () => {
     subject: "",
     group: "",
     number: "",
+    class: "1", // Default class value
   });
+
+  const [createResult] = useCreateResultMutation();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -18,8 +23,14 @@ const AddExamResult = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      await createResult(formData);
+      toast.success("Success Result Created");
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <div className="max-w-screen-md w-full mx-auto mt-20">
@@ -43,6 +54,28 @@ const AddExamResult = () => {
               required
             />
           </div>
+
+          <div className="mb-4">
+            <label
+              htmlFor="class"
+              className="block text-sm font-medium text-gray-600"
+            >
+              Class
+            </label>
+            <select
+              id="class"
+              name="class"
+              value={formData.class}
+              onChange={handleChange}
+              className="w-full mt-1 px-3 py-2 border rounded-md border-gray-300 focus:outline-none focus:border-blue-500"
+            >
+              {Array.from({ length: 10 }, (_, i) => (
+                <option key={i} value={(i + 1).toString()}>
+                  {i + 1}
+                </option>
+              ))}
+            </select>
+          </div>
           <div className="mb-4">
             <label
               htmlFor="subject"
@@ -60,6 +93,7 @@ const AddExamResult = () => {
               required
             />
           </div>
+
           <div className="mb-4">
             <label
               htmlFor="group"
@@ -87,6 +121,8 @@ const AddExamResult = () => {
             <input
               type="number"
               id="number"
+              min={0}
+              max={100}
               name="number"
               value={formData.number}
               onChange={handleChange}

@@ -77,7 +77,7 @@ const dashLink = [
   },
   {
     id: 3634353343,
-    name: "contacts",
+    name: "Exam Result",
     path: "/dashboard/contact",
     icon: FaRegAddressBook,
   },
