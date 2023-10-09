@@ -34,7 +34,11 @@ const GalleryTable = () => {
               </thead>
               <tbody>
                 {galleries.map((gallery) => (
-                  <GalleryRow key={gallery.id} gallery={gallery} />
+                  <GalleryRow
+                    key={gallery.id}
+                    gallery={gallery}
+                    refetch={refetch}
+                  />
                 ))}
               </tbody>
             </table>

@@ -40,15 +40,9 @@ const NoticeModal = ({ isEditOpen, setIsEditOpen, id, refetch }) => {
       setIsEditOpen={setIsEditOpen}
     >
       <form onSubmit={handleSubmit} className="">
-        <div className="max-h-max max-w-screen-md w-full mx-auto bg-white p-5 rounded-md shadow-lg m-3">
+        <div className="max-h-max max-w-screen-md w-full mx-auto bg-white p-5 rounded-md -lg m-3">
           <div className="grid gap-3">
             <div className="mb-4">
-              <label
-                htmlFor="noticename"
-                className="block text-primary-20/90 font-bold uppercase"
-              >
-                Write your notice name
-              </label>
               <input
                 onChange={handleChange}
                 placeholder="write notice name"

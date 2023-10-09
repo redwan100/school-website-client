@@ -155,6 +155,13 @@ export const baseApi = createApi({
     getGallery: builder.query({
       query: () => "/gallery",
     }),
+
+    deleteGallery: builder.mutation({
+      query: (id) => ({
+        url: `/delete-gallery/${id}`,
+        method: "DELETE",
+      }),
+    }),
   }),
 });
 
@@ -176,6 +183,7 @@ export const {
   useGetSingleCommunicationQuery,
   useCreateGalleryMutation,
   useGetGalleryQuery,
+  useDeleteGalleryMutation,
   useCreateAboutMutation,
   useGetAboutQuery,
   useGetSingleAboutQuery,

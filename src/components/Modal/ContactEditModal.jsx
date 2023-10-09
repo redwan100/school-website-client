@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Button from "../../pages/shared/Button";
 import Modal from "./Modal";
 import {
@@ -29,13 +29,16 @@ const ContactEditModal = ({ isEditOpen, setIsEditOpen, id, refetch }) => {
     setIsEditOpen(false);
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission (e.g., send data to the server)
-    update({ data: formData, id });
-    closeModal();
-    refetch();
-    singleRefetch();
+    try {
+      await update({ data: formData, id });
+      closeModal();
+      refetch();
+      singleRefetch();
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

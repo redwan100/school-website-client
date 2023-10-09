@@ -1,15 +1,9 @@
-import { useEffect } from "react";
 import { useGetCommunicationQuery } from "../../../../redux/features/api/baseApi";
 import ContactRow from "./ContactRow";
 
 const ContactTable = () => {
-  const { data, isSuccess, isLoading, refetch } = useGetCommunicationQuery();
+  const { data, refetch } = useGetCommunicationQuery();
 
-  useEffect(() => {
-    if (isSuccess) {
-      refetch();
-    }
-  }, [isSuccess]);
   return (
     <div>
       {data && Array.isArray(data) && data.length > 0 ? (

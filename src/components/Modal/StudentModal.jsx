@@ -46,7 +46,7 @@ const StudentModal = ({ isEditOpen, setIsEditOpen, id, refetch }) => {
     <Modal
       isEditOpen={isEditOpen}
       setIsEditOpen={setIsEditOpen}
-      title={"Edit Contact"}
+      title={"Edit Student Information"}
     >
       <div>
         <form

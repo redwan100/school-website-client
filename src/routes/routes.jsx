@@ -15,6 +15,7 @@ import NoticeTable from "../components/Slider/dashboard/Notice/NoticeTable";
 import AboutUsTable from "../components/Slider/dashboard/AboutUs/AboutUsTable";
 import ContactTable from "../components/Slider/dashboard/Contacts/ContactTable";
 import StudentTable from "../components/Slider/dashboard/Students/StudentTable";
+import AddExamResult from "../pages/dashboard/AddExamResult";
 
 const router = createBrowserRouter([
   {
@@ -63,6 +64,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/add-gallery",
         element: <AddGallery />,
+      },
+      {
+        path: "/dashboard/add-exam-result",
+        element: <AddExamResult />,
       },
       {
         path: "/dashboard/gallery",

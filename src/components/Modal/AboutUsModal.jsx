@@ -37,7 +37,7 @@ const AboutUsModal = ({ isEditOpen, setIsEditOpen, id, refetch }) => {
     <Modal
       isEditOpen={isEditOpen}
       setIsEditOpen={setIsEditOpen}
-      title={"Edit Contact"}
+      title={"Edit About"}
     >
       <div>
         <form
@@ -45,12 +45,6 @@ const AboutUsModal = ({ isEditOpen, setIsEditOpen, id, refetch }) => {
           className="max-w-screen-md w-full mx-auto bg-white p-3 rounded-md  flex flex-col"
         >
           <div className="mb-4">
-            <label
-              htmlFor="roll"
-              className="block text-gray-700 text-sm font-bold mb-2"
-            >
-              About us!
-            </label>
             <textarea
               onChange={handleChange}
               defaultValue={data?.message}

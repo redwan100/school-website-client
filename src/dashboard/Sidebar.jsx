@@ -36,6 +36,12 @@ const links = [
     path: "/dashboard/add-contact",
     icon: FaRegAddressBook,
   },
+  {
+    id: 363363443,
+    name: "add exam result",
+    path: "/dashboard/add-exam-result",
+    icon: FaRegAddressBook,
+  },
 ];
 
 const dashLink = [
@@ -65,6 +71,12 @@ const dashLink = [
   },
   {
     id: 36343343,
+    name: "contacts",
+    path: "/dashboard/contact",
+    icon: FaRegAddressBook,
+  },
+  {
+    id: 3634353343,
     name: "contacts",
     path: "/dashboard/contact",
     icon: FaRegAddressBook,
