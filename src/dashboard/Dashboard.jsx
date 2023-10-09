@@ -15,7 +15,9 @@ const Dashboard = () => {
       </div>
       <div
         className={` ${
-          showSidebar ? "ml-[10rem] transition-all" : "ml-[3rem] transition-all"
+          showSidebar
+            ? "ml-[12.3rem] transition-all m-2"
+            : "ml-[4.4rem] m-3 transition-all"
         }`}
       >
         <Outlet />

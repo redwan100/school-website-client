@@ -162,6 +162,41 @@ export const baseApi = createApi({
         method: "DELETE",
       }),
     }),
+
+    /* -------------------------------------------------------------------------- */
+    /*                           TODO: EXAM RESULT SLICE                          */
+    /* -------------------------------------------------------------------------- */
+
+    getResult: builder.query({
+      query: () => "/all-result",
+    }),
+
+    getSingleResult: builder.query({
+      query: (id) => `/single-result/${id}`,
+    }),
+
+    createResult: builder.mutation({
+      query: (student) => ({
+        url: "/add-result",
+        method: "POST",
+        body: student,
+      }),
+    }),
+
+    updateResult: builder.mutation({
+      query: ({ id, formData }) => ({
+        url: `/update-result/${id}`,
+        method: "PATCH",
+        body: formData,
+      }),
+    }),
+
+    deleteResult: builder.mutation({
+      query: (id) => ({
+        url: `/delete-result/${id}`,
+        method: "DELETE",
+      }),
+    }),
   }),
 });
 

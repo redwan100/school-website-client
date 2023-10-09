@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Button from "../shared/Button";
+import { FormTitle } from "../shared/FormTitle";
 
 const AddExamResult = () => {
   const [formData, setFormData] = useState({
@@ -22,8 +23,8 @@ const AddExamResult = () => {
   };
   return (
     <div className="max-w-screen-md w-full mx-auto mt-20">
+      <FormTitle title={"Add Exam Result"} />
       <div className="bg-white p-8 rounded-lg shadow-sm">
-        <h1 className="text-3xl font-semibold mb-4">Exam Result Form</h1>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label
