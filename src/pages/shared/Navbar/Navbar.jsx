@@ -33,15 +33,16 @@ const navmenu = [
     name: "education & training",
     path: "/education",
   },
+
   {
-    id: 7,
-    name: "about us page",
-    path: "/about",
-  },
-  {
-    id: 7,
+    id: 37,
     name: "contact",
     path: "/contact",
+  },
+  {
+    id: 75,
+    name: "about us",
+    path: "/about-us",
   },
 ];
 

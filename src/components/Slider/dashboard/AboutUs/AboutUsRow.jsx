@@ -32,7 +32,11 @@ const AboutUsRow = ({ message, sl, refetch }) => {
       </td>
       <td className="px-6 py-4 whitespace-nowrap">
         <div className="text-sm sm:text-base md:text-lg text-gray-900">
-          {message?.message}
+          {message?.message?.length > 100 ? (
+            <>{message?.message.slice(0, 100)}...</>
+          ) : (
+            message?.message
+          )}
         </div>
       </td>
       <td className="px-6 py-4  text-sm sm:text-base md:text-lg text-gray-500 flex flex-col gap-2 sm:flex-row text-right w-max mx-auto">

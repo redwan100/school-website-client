@@ -17,7 +17,7 @@ const Results = () => {
     <Container>
       {results && Array.isArray(results) && results.length > 0 ? (
         <>
-          <div className="overflow-x-auto bg-zinc-200 ">
+          <div className="overflow-x-auto bg-zinc-200 mt-3">
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-stone-400 text-zinc-50">
                 <tr>

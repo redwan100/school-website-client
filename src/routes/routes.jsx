@@ -19,6 +19,7 @@ import AddExamResult from "../pages/dashboard/AddExamResult";
 import ExamResultTable from "../components/Slider/dashboard/ExamResult/ExamResultTable";
 import Student from "../pages/Student/Student";
 import Results from "../pages/Results/Results";
+import AboutUs from "../pages/AboutUs/AboutUs";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
       {
         path: "examresult",
         element: <Results />,
+      },
+      {
+        path: "about-us",
+        element: <AboutUs />,
       },
     ],
   },
