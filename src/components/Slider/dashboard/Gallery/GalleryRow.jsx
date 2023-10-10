@@ -28,7 +28,7 @@ const GalleryRow = ({ gallery, refetch }) => {
           <div className="flex-shrink-0 h-12 w-12">
             <img
               className="h-full w-full rounded-md border border-zinc-400 block object-cover"
-              src={`${import.meta.env.VITE_BASE_URL}/${image[0].filename}`}
+              src={`${import.meta.env.VITE_BASE_URL}/${image[0]?.filename}`}
               alt={`Image of`}
             />
           </div>
