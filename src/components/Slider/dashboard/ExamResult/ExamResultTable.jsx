@@ -1,14 +1,19 @@
 import { useEffect } from "react";
 import { useGetResultQuery } from "../../../../redux/features/api/baseApi";
 import ExamResultRow from "./ExamResultRow";
+import PageLoader from "../../../../pages/shared/PageLoader";
 
 const ExamResultTable = () => {
-  const { data: results, refetch, isSuccess } = useGetResultQuery();
+  const { data: results, refetch, isSuccess, isLoading } = useGetResultQuery();
   useEffect(() => {
     if (isSuccess) {
       refetch();
     }
   }, [isSuccess]);
+
+  if (isLoading) {
+    return <PageLoader />;
+  }
   return (
     <div>
       {results && Array.isArray(results) && results.length > 0 ? (

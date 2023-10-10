@@ -1,8 +1,12 @@
+import PageLoader from "../../../../pages/shared/PageLoader";
 import { useGetAboutQuery } from "../../../../redux/features/api/baseApi";
 import AboutUsRow from "./AboutUsRow";
 
 const AboutUsTable = () => {
-  const { data, refetch } = useGetAboutQuery();
+  const { data, refetch, isLoading } = useGetAboutQuery();
+  if (isLoading) {
+    return <PageLoader />;
+  }
   return (
     <div>
       {data && Array.isArray(data) && data.length > 0 ? (

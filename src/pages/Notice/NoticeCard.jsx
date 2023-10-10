@@ -1,7 +1,7 @@
 import { BsFileEarmarkPdf } from "react-icons/bs";
 
 const NoticeCard = ({ notice }) => {
-  const { noticeName, filename } = notice;
+  const { notice: noticeName, filename } = notice;
   return (
     <>
       <div className="flex justify-between items-center   bg-primary-10/10 py-2 px-1 border-b-2 border-primary-10 border-dotted">

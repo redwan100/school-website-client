@@ -1,37 +1,41 @@
+import { Link } from "react-router-dom";
 import NoticeCard from "./NoticeCard";
-const notices = [
-  {
-    _id: 21,
-    noticeName: "Notice 1",
-    filename: "filename",
-  },
-  {
-    _id: 21,
-    noticeName: "Notice 1",
-    filename: "filename",
-  },
-  {
-    _id: 21,
-    noticeName: "Notice 1",
-    filename: "filename",
-  },
-  {
-    _id: 21,
-    noticeName: "Notice 1",
-    filename: "filename",
-  },
-  {
-    _id: 21,
-    noticeName: "Notice 1",
-    filename: "filename",
-  },
-  {
-    _id: 21,
-    noticeName: "Notice 1",
-    filename: "filename",
-  },
-];
+import { useGetNoticeQuery } from "../../redux/features/api/baseApi";
+// const notices = [
+//   {
+//     _id: 21,
+//     noticeName: "Notice 1",
+//     filename: "filename",
+//   },
+//   {
+//     _id: 21,
+//     noticeName: "Notice 1",
+//     filename: "filename",
+//   },
+//   {
+//     _id: 21,
+//     noticeName: "Notice 1",
+//     filename: "filename",
+//   },
+//   {
+//     _id: 21,
+//     noticeName: "Notice 1",
+//     filename: "filename",
+//   },
+//   {
+//     _id: 21,
+//     noticeName: "Notice 1",
+//     filename: "filename",
+//   },
+//   {
+//     _id: 21,
+//     noticeName: "Notice 1",
+//     filename: "filename",
+//   },
+// ];
 const Notice = () => {
+  const { data: notices, isLoading, isError } = useGetNoticeQuery();
+  console.log(notices);
   return (
     <div>
       <div className="max-w-screen-md w-full mx-auto my-4">

@@ -1,15 +1,25 @@
 import { useEffect } from "react";
 import { useGetGalleryQuery } from "../../../../redux/features/api/baseApi";
 import GalleryRow from "./GalleryRow";
+import PageLoader from "../../../../pages/shared/PageLoader";
 
 const GalleryTable = () => {
-  const { data: galleries, isSuccess, refetch } = useGetGalleryQuery();
+  const {
+    data: galleries,
+    isSuccess,
+    refetch,
+    isLoading,
+  } = useGetGalleryQuery();
 
   useEffect(() => {
     if (isSuccess) {
       refetch();
     }
   }, [isSuccess]);
+
+  if (isLoading) {
+    return <PageLoader />;
+  }
   return (
     <div>
       {galleries && Array.isArray(galleries) && galleries.length > 0 ? (

@@ -1,8 +1,12 @@
+import PageLoader from "../../../../pages/shared/PageLoader";
 import { useGetCommunicationQuery } from "../../../../redux/features/api/baseApi";
 import ContactRow from "./ContactRow";
 
 const ContactTable = () => {
-  const { data, refetch } = useGetCommunicationQuery();
+  const { data, refetch, isLoading } = useGetCommunicationQuery();
+  if (isLoading) {
+    return <PageLoader />;
+  }
 
   return (
     <div>

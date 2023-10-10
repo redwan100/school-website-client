@@ -4,9 +4,17 @@ import { PiGraduationCapFill } from "react-icons/pi";
 import { BsFillPeopleFill } from "react-icons/bs";
 import { FaRegAddressBook } from "react-icons/fa";
 import { PiExamLight } from "react-icons/pi";
+import { GoHome } from "react-icons/go";
+import { LiaEdit } from "react-icons/lia";
 import { NavLink } from "react-router-dom";
 
 const links = [
+  {
+    id: 343,
+    name: "home",
+    path: "/",
+    icon: GoHome,
+  },
   {
     id: 343,
     name: "add notice",
@@ -100,7 +108,8 @@ const Sidebar = ({ showSidebar, toggleSidebar }) => {
           Dashboard
         </span>
       </div>
-      <div className="w-full flex flex-col gap-3 bg-stone-400 rounded-sm drop-shadow-sm py-3 px-2">
+
+      <div className="w-full flex flex-col gap-2 p-2 bg-stone-400 rounded-sm drop-shadow-sm">
         {links.map(({ icon: Icon, name, path, id }) => (
           <NavLink
             key={id}
@@ -109,7 +118,7 @@ const Sidebar = ({ showSidebar, toggleSidebar }) => {
               isActive ? "sidebarActive" : "notActive"
             }
           >
-            <li className="list-none w-full h-full p-1 hover:bg-stone-500 rounded-sm flex items-center gap-2">
+            <li className="list-none w-full h-full p-1  hover:bg-stone-800 rounded-md flex items-center gap-2">
               <Icon size={20} />
               <span
                 className={`${showSidebar ? "block capitalize" : "hidden"}`}
@@ -122,11 +131,12 @@ const Sidebar = ({ showSidebar, toggleSidebar }) => {
       </div>
 
       <div className="w-full my-4">
-        <p className={`${showSidebar ? "block capitalize" : "hidden"}`}>
-          <span className="bg-stone-600 text-slate-50 py-2 px-2 block mb-2 rounded-md">
-            Update and delete
-          </span>
-        </p>
+        <div className="flex items-center justify-center gap-2 bg-stone-600 text-slate-50 py-2 px-2  mb-2 rounded-md ">
+          <LiaEdit size={25} />
+          <p className={`${showSidebar ? "block capitalize" : "hidden"}`}>
+            <span className="">Update and delete</span>
+          </p>
+        </div>
         <div className="w-full flex flex-col gap-3 bg-stone-400 rounded-sm drop-shadow-sm py-3 px-2">
           {dashLink.map(({ icon: Icon, name, path, id }) => (
             <NavLink
@@ -136,7 +146,7 @@ const Sidebar = ({ showSidebar, toggleSidebar }) => {
                 isActive ? "sidebarActive" : "notActive"
               }
             >
-              <li className="list-none w-full h-full p-1 hover:bg-stone-500 rounded-sm flex items-center gap-2">
+              <li className="list-none w-full h-full p-1 hover:bg-stone-800 rounded-sm flex items-center gap-2">
                 <Icon size={20} />
                 <span
                   className={`${showSidebar ? "block capitalize" : "hidden"}`}

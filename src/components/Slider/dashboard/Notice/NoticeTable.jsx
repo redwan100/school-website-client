@@ -1,15 +1,20 @@
 import { useEffect } from "react";
 import { useGetNoticeQuery } from "../../../../redux/features/api/baseApi";
 import NoticeRow from "./NoticeRow";
+import PageLoader from "../../../../pages/shared/PageLoader";
 
 const NoticeTable = () => {
-  const { data: notices, isSuccess, refetch } = useGetNoticeQuery();
+  const { data: notices, isSuccess, refetch, isLoading } = useGetNoticeQuery();
 
   useEffect(() => {
     if (isSuccess) {
       refetch();
     }
   }, [isSuccess]);
+
+  if (isLoading) {
+    return <PageLoader />;
+  }
   return (
     <div>
       {notices && Array.isArray(notices) && notices.length > 0 ? (

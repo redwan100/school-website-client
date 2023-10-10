@@ -11,5 +11,9 @@ body {
 }
 
 .sidebarActive {
-  @apply bg-stone-600 rounded-sm drop-shadow-md text-stone-50;
+  @apply bg-stone-900 rounded-sm drop-shadow-md text-stone-50;
+}
+
+.notActive {
+  @apply bg-stone-500;
 }
