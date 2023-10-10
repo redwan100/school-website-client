@@ -137,7 +137,7 @@ const Sidebar = ({ showSidebar, toggleSidebar }) => {
             <span className="">Update and delete</span>
           </p>
         </div>
-        <div className="w-full flex flex-col gap-3 bg-stone-400 rounded-sm drop-shadow-sm py-3 px-2">
+        <div className="w-full flex flex-col gap-2 bg-stone-400 rounded-sm drop-shadow-sm py-3 px-2">
           {dashLink.map(({ icon: Icon, name, path, id }) => (
             <NavLink
               key={id}

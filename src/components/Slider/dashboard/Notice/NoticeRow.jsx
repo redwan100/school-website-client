@@ -10,9 +10,14 @@ const NoticeRow = ({ n, sl, refetch }) => {
   const [isEditOpen, setIsEditOpen] = useState(false);
   const [deleteNotice] = useDeleteNoticeMutation();
 
-  const modalHandler = (id) => {
-    deleteNotice(id);
-    refetch();
+  const modalHandler = async (id) => {
+    try {
+      await deleteNotice(id);
+      refetch();
+      closeModal();
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const closeModal = () => {

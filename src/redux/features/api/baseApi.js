@@ -152,6 +152,10 @@ export const baseApi = createApi({
       }),
     }),
 
+    getAllImages: builder.query({
+      query: () => "/all-gallery",
+    }),
+
     getGallery: builder.query({
       query: () => "/gallery",
     }),
@@ -218,6 +222,7 @@ export const {
   useGetSingleCommunicationQuery,
   useCreateGalleryMutation,
   useGetGalleryQuery,
+  useGetAllImagesQuery,
   useDeleteGalleryMutation,
   useCreateAboutMutation,
   useGetAboutQuery,

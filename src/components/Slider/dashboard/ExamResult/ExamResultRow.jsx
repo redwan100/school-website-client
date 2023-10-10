@@ -11,10 +11,11 @@ const ExamResultRow = ({ result, refetch }) => {
 
   const [deleteResult] = useDeleteResultMutation();
 
-  const modalHandler = (id) => {
+  const modalHandler = async (id) => {
     try {
-      deleteResult(id);
+      await deleteResult(id);
       refetch();
+      closeModal();
     } catch (error) {
       console.log(error);
     }

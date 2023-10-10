@@ -11,10 +11,11 @@ const StudentRow = ({ student, refetch }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isEditOpen, setIsEditOpen] = useState(false);
 
-  const modalHandler = (id) => {
+  const modalHandler = async (id) => {
     try {
-      deleteStudent(id);
+      await deleteStudent(id);
       refetch();
+      closeModal();
     } catch (error) {
       console.log(error);
     }

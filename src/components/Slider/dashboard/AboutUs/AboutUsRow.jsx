@@ -9,9 +9,14 @@ const AboutUsRow = ({ message, sl, refetch }) => {
 
   const [deleteAbout] = useDeleteAboutMutation();
 
-  const modalHandler = (id) => {
-    deleteAbout(id);
-    refetch();
+  const modalHandler = async (id) => {
+    try {
+      await deleteAbout(id);
+      refetch();
+      closeModal();
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const closeModal = () => {

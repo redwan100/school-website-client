@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDeleteCommunicationMutation } from "../../../../redux/features/api/baseApi";
 import DeleteModal from "../../../Modal/DeleteModal";
-import Modal from "../../../Modal/Modal";
+
 import ContactEditModal from "../../../Modal/ContactEditModal";
 
 const ContactRow = ({ communication, refetch }) => {
@@ -12,9 +12,14 @@ const ContactRow = ({ communication, refetch }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isEditOpen, setIsEditOpen] = useState(false);
 
-  const modalHandler = (id) => {
-    deleteContact(id);
-    refetch();
+  const modalHandler = async (id) => {
+    try {
+      await deleteContact(id);
+      refetch();
+      closeModal();
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const closeModal = () => {

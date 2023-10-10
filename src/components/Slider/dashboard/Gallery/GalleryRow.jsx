@@ -11,6 +11,7 @@ const GalleryRow = ({ gallery, refetch }) => {
     try {
       await deleteGallery(id);
       refetch();
+      closeModal();
     } catch (error) {
       console.log(error);
     }
