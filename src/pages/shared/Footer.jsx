@@ -12,8 +12,8 @@ const Footer = () => {
   }
   console.log();
   return (
-    <div className="bg-zinc-700  pt-6 pb-3">
-      <div className="container mx-auto px-3 lg:max-w-[80%] w-full grid gap-4 sm:grid-cols-2 md:grid-cols-3 ">
+    <footer className="bg-zinc-700  pt-10 mt-5">
+      <div className="container mx-auto px-3 lg:max-w-[80%] w-full grid gap-6 sm:grid-cols-2 md:grid-cols-3 py-5">
         {/* ABOUT US  */}
         <div className="text-zinc-50 ">
           <h1 className="text-2xl font-medium mb-2 uppercase">about us</h1>
@@ -31,10 +31,25 @@ const Footer = () => {
           {data && Array.isArray(data) && data.length > 0 ? (
             <>
               {data?.map((info) => (
-                <div key={info._id} className="text-zinc-100">
-                  <h4>{info.address}</h4>
-                  <h4>{info.phone}</h4>
-                  <h4>{info.email}</h4>
+                <div key={info._id} className="text-zinc-200">
+                  <h4>
+                    Address:{" "}
+                    <span className="text-zinc-200 font-medium">
+                      {info.address}
+                    </span>
+                  </h4>
+                  <h4>
+                    Phone:{" "}
+                    <span className="text-zinc-200 font-medium">
+                      {info.phone}
+                    </span>
+                  </h4>
+                  <h4>
+                    Email:{" "}
+                    <span className="text-zinc-200 font-medium">
+                      {info.email}
+                    </span>
+                  </h4>
                 </div>
               ))}
             </>
@@ -66,7 +81,12 @@ const Footer = () => {
           </ul>
         </div>
       </div>
-    </div>
+
+      <p className="text-white text-center p-2 bg-zinc-800">
+        &copy; copyrights {new Date().getFullYear()}. All rights reserved by
+        redwan. Design and developed by redwan islam
+      </p>
+    </footer>
   );
 };
 
