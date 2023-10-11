@@ -22,6 +22,7 @@ import Results from "../pages/Results/Results";
 import AboutUs from "../pages/AboutUs/AboutUs";
 import Contact from "../pages/Contact/Contact";
 import AddEduTraining from "../pages/dashboard/AddEduTraining";
+import EduTrainingTable from "../components/Slider/dashboard/EduTraining/EduTrainingTable";
 
 const router = createBrowserRouter([
   {
@@ -114,6 +115,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/result",
         element: <ExamResultTable />,
+      },
+      {
+        path: "/dashboard/edu-training",
+        element: <EduTrainingTable />,
       },
     ],
   },

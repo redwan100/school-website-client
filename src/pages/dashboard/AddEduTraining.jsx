@@ -1,10 +1,15 @@
 import { useState } from "react";
 import { BiImageAdd } from "react-icons/bi";
+import { useCreateTrainingMutation } from "../../redux/features/api/baseApi";
+import toast from "react-hot-toast";
+
 const AddEduTraining = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState(null);
   const [text, setText] = useState("select image");
+
+  const [createTraining, { isLoading }] = useCreateTrainingMutation();
 
   const handleTitleChange = (e) => {
     setTitle(e.target.value);
@@ -19,20 +24,23 @@ const AddEduTraining = () => {
     setText("successfully selected image");
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      // Create a new FormData object and append the form data
+      const formData = new FormData();
+      formData.append("title", title);
+      formData.append("description", description);
+      formData.append("image", image);
 
-    // Create a new FormData object and append the form data
-    const formData = new FormData();
-    formData.append("title", title);
-    formData.append("description", description);
-    formData.append("image", image);
+      await createTraining(formData);
 
-    // You can now send `formData` to your server using AJAX or fetch
-
-    // Example of sending the form data using fetch:
-    console.log(formData);
+      toast.success("Training created successfully");
+    } catch (error) {
+      console.log(error);
+    }
   };
+
   return (
     <div className="max-w-screen-md  w-full bg-white p-6 rounded-md border border-zinc-200 mx-auto mt-5">
       <form onSubmit={handleSubmit}>
@@ -44,6 +52,7 @@ const AddEduTraining = () => {
             Title
           </label>
           <input
+            required
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="title"
             type="text"
@@ -61,6 +70,7 @@ const AddEduTraining = () => {
             Description
           </label>
           <textarea
+            required
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="description"
             rows="5"
@@ -76,6 +86,7 @@ const AddEduTraining = () => {
             className="border-2 border-zinc-100 w-full  rounded-[4px] p-4 min-h-[30vh] grid place-items-center"
           >
             <input
+              required
               hidden
               type="file" // Use type 'file' for image upload
               id="image"
@@ -97,7 +108,7 @@ const AddEduTraining = () => {
             className="bg-primary-10/80 hover:bg-primary-10 w-full text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             type="submit"
           >
-            Create Post
+            {isLoading ? "Creating..." : "Create Post"}
           </button>
         </div>
       </form>
