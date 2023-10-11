@@ -43,7 +43,7 @@ const EduTrainingRow = ({ training, refetch }) => {
       </td>
       <td className="px-6 py-4 whitespace-nowrap">
         <div className="text-sm sm:text-base md:text-lg text-gray-900">
-          {description}
+          {description.slice(0, 20) + "..."}
         </div>
       </td>
 

@@ -54,7 +54,7 @@ const Navbar = () => {
   };
   return (
     <>
-      <nav className="w-full bg-primary-10/80 py-4 sticky top-0 left-0 z-20">
+      <nav className="w-full bg-primary-10/80 py-4 sticky top-0 left-0 z-50">
         <div className="flex items-center gap-3 justify-center container mx-auto lg:max-w-[90%] px-2">
           {navmenu.map((menu) => (
             <li

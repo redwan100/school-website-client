@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { FormTitle } from "../shared/FormTitle";
-
+import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { useCreateGalleryMutation } from "../../redux/features/api/baseApi";
 import { BiImageAdd } from "react-icons/bi";
@@ -8,7 +8,7 @@ import { BiImageAdd } from "react-icons/bi";
 const AddGallery = () => {
   const [images, setImages] = useState();
   const [message, setMessage] = useState("select images");
-
+  const navigate = useNavigate();
   const [createGallery, { isLoading, isSuccess }] = useCreateGalleryMutation();
 
   const handleFileChange = (e) => {
@@ -16,6 +16,7 @@ const AddGallery = () => {
     const imageList = Array.from(fileList);
 
     setImages(imageList);
+    setMessage("successfully selected");
   };
 
   // Handle form input changes
@@ -32,6 +33,7 @@ const AddGallery = () => {
       }
 
       await createGallery(formDataToSend);
+      navigate("/dashboard/gallery", { replace: true });
     } catch (error) {
       console.log(error);
     }

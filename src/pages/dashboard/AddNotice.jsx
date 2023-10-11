@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 import { FormTitle } from "../shared/FormTitle";
 import toast from "react-hot-toast";
 import { useCreateNoticeMutation } from "../../redux/features/api/baseApi";
-
+import { useNavigate } from "react-router-dom";
 const AddNotice = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [noticeName, setNoticeName] = useState("");
   const [pdfName, setPdfName] = useState("UPLOAD PDF");
   const [isDisabled, setIsDisabled] = useState(true);
+  const navigate = useNavigate();
 
   const [createNotice, { isLoading, isSuccess }] = useCreateNoticeMutation();
 
@@ -26,6 +27,7 @@ const AddNotice = () => {
       formData.append("noticeName", noticeName);
 
       await createNotice(formData);
+      navigate("/dashboard/notice", { replace: true });
 
       setPdfName("UPLOAD PDF");
       setNoticeName("");

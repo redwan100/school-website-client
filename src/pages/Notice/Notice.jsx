@@ -4,38 +4,7 @@ import { useGetNoticeQuery } from "../../redux/features/api/baseApi";
 import PageLoader from "../shared/PageLoader";
 import About from "../AboutUs/About";
 import AboutUs from "../AboutUs/AboutUs";
-// const notices = [
-//   {
-//     _id: 21,
-//     noticeName: "Notice 1",
-//     filename: "filename",
-//   },
-//   {
-//     _id: 21,
-//     noticeName: "Notice 1",
-//     filename: "filename",
-//   },
-//   {
-//     _id: 21,
-//     noticeName: "Notice 1",
-//     filename: "filename",
-//   },
-//   {
-//     _id: 21,
-//     noticeName: "Notice 1",
-//     filename: "filename",
-//   },
-//   {
-//     _id: 21,
-//     noticeName: "Notice 1",
-//     filename: "filename",
-//   },
-//   {
-//     _id: 21,
-//     noticeName: "Notice 1",
-//     filename: "filename",
-//   },
-// ];
+
 const Notice = () => {
   const { data: notices, isLoading } = useGetNoticeQuery();
   if (isLoading) {

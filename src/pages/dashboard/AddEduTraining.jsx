@@ -2,13 +2,13 @@ import { useState } from "react";
 import { BiImageAdd } from "react-icons/bi";
 import { useCreateTrainingMutation } from "../../redux/features/api/baseApi";
 import toast from "react-hot-toast";
-
+import { useNavigate } from "react-router-dom";
 const AddEduTraining = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState(null);
   const [text, setText] = useState("select image");
-
+  const navigate = useNavigate();
   const [createTraining, { isLoading }] = useCreateTrainingMutation();
 
   const handleTitleChange = (e) => {
@@ -34,6 +34,7 @@ const AddEduTraining = () => {
       formData.append("image", image);
 
       await createTraining(formData);
+      navigate("/dashboard/edu-training", { replace: true });
 
       toast.success("Training created successfully");
     } catch (error) {

@@ -1,9 +1,22 @@
+import { useEffect } from "react";
 import PageLoader from "../../../../pages/shared/PageLoader";
 import { useGetTrainingQuery } from "../../../../redux/features/api/baseApi";
 import EduTrainingRow from "./EduTrainingRow";
 
 const EduTrainingTable = () => {
-  const { data: trainings, isLoading, refetch } = useGetTrainingQuery();
+  const {
+    data: trainings,
+    isLoading,
+    isSuccess,
+    refetch,
+  } = useGetTrainingQuery();
+
+  useEffect(() => {
+    if (isSuccess) {
+      refetch();
+    }
+  }, [isSuccess]);
+
   if (isLoading) {
     return <PageLoader />;
   }

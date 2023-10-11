@@ -1,9 +1,16 @@
+import { useEffect } from "react";
 import PageLoader from "../../../../pages/shared/PageLoader";
 import { useGetCommunicationQuery } from "../../../../redux/features/api/baseApi";
 import ContactRow from "./ContactRow";
 
 const ContactTable = () => {
-  const { data, refetch, isLoading } = useGetCommunicationQuery();
+  const { data, refetch, isLoading, isSuccess } = useGetCommunicationQuery();
+
+  useEffect(() => {
+    if (isSuccess) {
+      refetch();
+    }
+  }, [isSuccess]);
   if (isLoading) {
     return <PageLoader />;
   }

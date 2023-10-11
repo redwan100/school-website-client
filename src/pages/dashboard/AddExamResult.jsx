@@ -3,7 +3,7 @@ import Button from "../shared/Button";
 import { FormTitle } from "../shared/FormTitle";
 import { useCreateResultMutation } from "../../redux/features/api/baseApi";
 import toast from "react-hot-toast";
-
+import { useNavigate } from "react-router-dom";
 const AddExamResult = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -12,6 +12,8 @@ const AddExamResult = () => {
     number: "",
     class: "1", // Default class value
   });
+
+  const navigate = useNavigate();
 
   const [createResult] = useCreateResultMutation();
 
@@ -27,6 +29,7 @@ const AddExamResult = () => {
     e.preventDefault();
     try {
       await createResult(formData);
+      navigate("/dashboard/result", { replace: true });
       toast.success("Success Result Created");
     } catch (error) {
       console.log(error);

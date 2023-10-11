@@ -1,9 +1,17 @@
+import { useEffect } from "react";
 import PageLoader from "../../../../pages/shared/PageLoader";
 import { useGetAboutQuery } from "../../../../redux/features/api/baseApi";
 import AboutUsRow from "./AboutUsRow";
 
 const AboutUsTable = () => {
-  const { data, refetch, isLoading } = useGetAboutQuery();
+  const { data, refetch, isSuccess, isLoading } = useGetAboutQuery();
+
+  useEffect(() => {
+    if (isSuccess) {
+      refetch();
+    }
+  }, [isSuccess]);
+
   if (isLoading) {
     return <PageLoader />;
   }

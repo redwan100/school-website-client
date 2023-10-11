@@ -4,6 +4,7 @@ import Button from "../shared/Button";
 import toast from "react-hot-toast";
 import { useCreateStudentMutation } from "../../redux/features/api/baseApi";
 import { BiImageAdd } from "react-icons/bi";
+import { useNavigate } from "react-router-dom";
 
 const classOptions = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
 
@@ -14,6 +15,8 @@ const AddStudent = () => {
     class: classOptions[0],
     image: null, // Initialize the 'image' field with null// Default to the first class option
   });
+
+  const navigate = useNavigate();
 
   const [message, setMessage] = useState("select image");
 
@@ -44,6 +47,7 @@ const AddStudent = () => {
     newStudentData.append("roll", formData.roll);
     try {
       await createStudent(newStudentData);
+      navigate("/dashboard/student", { replace: true });
     } catch (err) {
       console.log(err);
     }

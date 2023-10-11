@@ -12,7 +12,7 @@ const Student = () => {
   return (
     <Container>
       {students && Array.isArray(students) && students.length > 0 ? (
-        <div className="grid gap-2  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 my-3 mx-2 sm:mx-0">
+        <div className="grid  gap-2  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 my-3 mx-2 sm:mx-0">
           {students.map((student) => (
             <StudentCard key={student._id} student={student} />
           ))}

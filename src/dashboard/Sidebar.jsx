@@ -107,7 +107,7 @@ const dashLink = [
 const Sidebar = ({ showSidebar, toggleSidebar }) => {
   return (
     <div
-      className={`fixed top-0 left-0 bg-zinc-300 text-stone-50 z-40  p-2 border-2 h-screen transition-all duration-1000 flex flex-col items-center  overflow-scroll no-scrollbar ${
+      className={`fixed top-0 left-0 bg-zinc-300 text-stone-50 z-10  p-2 border-2 h-screen transition-all duration-1000 flex flex-col items-center  overflow-scroll no-scrollbar ${
         showSidebar && "w-max transition-all duration-1000"
       }`}
     >

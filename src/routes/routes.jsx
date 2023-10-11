@@ -23,6 +23,7 @@ import AboutUs from "../pages/AboutUs/AboutUs";
 import Contact from "../pages/Contact/Contact";
 import AddEduTraining from "../pages/dashboard/AddEduTraining";
 import EduTrainingTable from "../components/Slider/dashboard/EduTraining/EduTrainingTable";
+import Training from "../pages/EducationAndTraining/Training";
 
 const router = createBrowserRouter([
   {
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
       {
         path: "contact",
         element: <Contact />,
+      },
+      {
+        path: "education",
+        element: <Training />,
       },
     ],
   },
