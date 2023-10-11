@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 import NoticeCard from "./NoticeCard";
 import { useGetNoticeQuery } from "../../redux/features/api/baseApi";
+import PageLoader from "../shared/PageLoader";
+import About from "../AboutUs/About";
+import AboutUs from "../AboutUs/AboutUs";
 // const notices = [
 //   {
 //     _id: 21,
@@ -34,11 +37,13 @@ import { useGetNoticeQuery } from "../../redux/features/api/baseApi";
 //   },
 // ];
 const Notice = () => {
-  const { data: notices, isLoading, isError } = useGetNoticeQuery();
-  console.log(notices);
+  const { data: notices, isLoading } = useGetNoticeQuery();
+  if (isLoading) {
+    return <PageLoader />;
+  }
   return (
     <div>
-      <div className="max-w-screen-md w-full mx-auto my-4">
+      <div className="max-w-screen-lg w-full mx-auto my-4">
         {/* TODO: LAST NEWS  */}
 
         <div className="border-4 rounded-md border-primary-10/70 mb-8 h-max">
@@ -68,6 +73,9 @@ const Notice = () => {
             )}
           </div>
         </div>
+      </div>
+      <div className="container mx-auto lg:w-[75%]">
+        <AboutUs />
       </div>
     </div>
   );

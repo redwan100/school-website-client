@@ -51,6 +51,12 @@ const links = [
     path: "/dashboard/add-exam-result",
     icon: PiExamLight,
   },
+  {
+    id: 3633563443,
+    name: "add education training",
+    path: "/dashboard/add-edu-training",
+    icon: PiExamLight,
+  },
 ];
 
 const dashLink = [
@@ -90,12 +96,18 @@ const dashLink = [
     path: "/dashboard/result",
     icon: PiExamLight,
   },
+  {
+    id: 3634353343,
+    name: "education training",
+    path: "/dashboard/edu-training",
+    icon: PiExamLight,
+  },
 ];
 
 const Sidebar = ({ showSidebar, toggleSidebar }) => {
   return (
     <div
-      className={`fixed top-0 left-0 bg-zinc-300 text-stone-50  p-2 border-2 h-screen transition-all duration-1000 flex flex-col items-center ${
+      className={`fixed top-0 left-0 bg-zinc-300 text-stone-50 z-40  p-2 border-2 h-screen transition-all duration-1000 flex flex-col items-center  overflow-scroll no-scrollbar ${
         showSidebar && "w-max transition-all duration-1000"
       }`}
     >

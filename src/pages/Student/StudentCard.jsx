@@ -7,8 +7,8 @@ function StudentCard({ student }) {
       <div className="text-zinc-700 p-3">
         <div className="rounded-md overflow-hidden max-h-[10rem]">
           <img
-            src="https://plus.unsplash.com/premium_photo-1689708721750-8a0e6dc14cee?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bWFuJTIwYXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
-            alt=""
+            src={`${import.meta.env.VITE_BASE_URL}/${avatar}`}
+            alt="avatar"
             className="w-full h-full object-cover"
           />
         </div>

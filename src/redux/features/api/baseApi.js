@@ -201,6 +201,40 @@ export const baseApi = createApi({
         method: "DELETE",
       }),
     }),
+
+    /* -------------------------------------------------------------------------- */
+    /*                            //TODO: TRAINING SLICE                           */
+    /* -------------------------------------------------------------------------- */
+    getTraining: builder.query({
+      query: () => "/all-training",
+    }),
+
+    getSingleTraining: builder.query({
+      query: (id) => `/single-training/${id}`,
+    }),
+
+    createTraining: builder.mutation({
+      query: (student) => ({
+        url: "/add-training",
+        method: "POST",
+        body: student,
+      }),
+    }),
+
+    updateTraining: builder.mutation({
+      query: ({ id, formData }) => ({
+        url: `/update-training/${id}`,
+        method: "PATCH",
+        body: formData,
+      }),
+    }),
+
+    deleteTraining: builder.mutation({
+      query: (id) => ({
+        url: `/delete-training/${id}`,
+        method: "DELETE",
+      }),
+    }),
   }),
 });
 
@@ -234,4 +268,9 @@ export const {
   useUpdateResultMutation,
   useCreateResultMutation,
   useDeleteResultMutation,
+  useGetTrainingQuery,
+  useGetSingleTrainingQuery,
+  useUpdateTrainingMutation,
+  useDeleteTrainingMutation,
+  useCreateTrainingMutation,
 } = baseApi;

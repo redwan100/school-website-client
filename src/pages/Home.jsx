@@ -14,7 +14,7 @@ const Home = () => {
       </div>
 
       <Container>
-        <div className="grid md:grid-cols-[4fr,_1fr] my-7 mx-2 md:mx-0 py-4 ">
+        <div className="grid md:grid-cols-[4fr,_1fr] my-7 mx-2 md:mx-0 py-4 gap-2">
           <About />
           <div className="mt-3 flex flex-col gap-3">
             <Link
@@ -31,6 +31,13 @@ const Home = () => {
             >
               <LiaArrowCircleRightSolid />
               Notice
+            </Link>
+            <Link
+              to={"/student"}
+              className="flex items-center gap-3 border border-primary-10 py-1 px-2 rounded-sm text-lg text-primary-10"
+            >
+              <LiaArrowCircleRightSolid />
+              Students
             </Link>
             <Link
               to={"/contact"}
