@@ -4,16 +4,23 @@ import { PiGraduationCapFill } from "react-icons/pi";
 import { BsFillPeopleFill } from "react-icons/bs";
 import { FaRegAddressBook } from "react-icons/fa";
 import { PiExamLight } from "react-icons/pi";
+import { LiaChalkboardTeacherSolid } from "react-icons/lia";
 import { GoHome } from "react-icons/go";
 import { LiaEdit } from "react-icons/lia";
 import { NavLink } from "react-router-dom";
 
 const links = [
   {
-    id: 343,
+    id: 34423,
     name: "home",
     path: "/",
     icon: GoHome,
+  },
+  {
+    id: 34373,
+    name: "add teacher",
+    path: "/dashboard/add-teacher",
+    icon: LiaChalkboardTeacherSolid,
   },
   {
     id: 343,
@@ -60,6 +67,12 @@ const links = [
 ];
 
 const dashLink = [
+  {
+    id: 34684443,
+    name: "teacher",
+    path: "/dashboard/teacher",
+    icon: LiaChalkboardTeacherSolid,
+  },
   {
     id: 3443,
     name: "notice",

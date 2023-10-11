@@ -24,6 +24,7 @@ import Contact from "../pages/Contact/Contact";
 import AddEduTraining from "../pages/dashboard/AddEduTraining";
 import EduTrainingTable from "../components/Slider/dashboard/EduTraining/EduTrainingTable";
 import Training from "../pages/EducationAndTraining/Training";
+import AddTeacher from "../pages/dashboard/AddTeacher";
 
 const router = createBrowserRouter([
   {
@@ -69,6 +70,10 @@ const router = createBrowserRouter([
     path: "dashboard",
     element: <Dashboard />,
     children: [
+      {
+        path: "/dashboard/add-teacher",
+        element: <AddTeacher />,
+      },
       {
         path: "/dashboard/add-notice",
         element: <AddNotice />,
