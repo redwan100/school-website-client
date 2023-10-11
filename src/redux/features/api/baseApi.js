@@ -10,6 +10,40 @@ export const baseApi = createApi({
     /* -------------------------------------------------------------------------- */
     /*                            //TODO: STUDENT SLICE                           */
     /* -------------------------------------------------------------------------- */
+    getTeachers: builder.query({
+      query: () => "/all-teacher",
+    }),
+
+    getSingleTeacher: builder.query({
+      query: (id) => `/single-teacher/${id}`,
+    }),
+
+    createTeacher: builder.mutation({
+      query: (student) => ({
+        url: "/add-teacher",
+        method: "POST",
+        body: student,
+      }),
+    }),
+
+    updateTeacher: builder.mutation({
+      query: ({ id, formData }) => ({
+        url: `/update-teacher/${id}`,
+        method: "PATCH",
+        body: formData,
+      }),
+    }),
+
+    deleteTeacher: builder.mutation({
+      query: (id) => ({
+        url: `/delete-teacher/${id}`,
+        method: "DELETE",
+      }),
+    }),
+
+    /* -------------------------------------------------------------------------- */
+    /*                            //TODO: STUDENT SLICE                           */
+    /* -------------------------------------------------------------------------- */
     getStudents: builder.query({
       query: () => "/all-student",
     }),
