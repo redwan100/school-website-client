@@ -1,10 +1,15 @@
 import { useGetAboutQuery } from "../../redux/features/api/baseApi";
 import PageLoader from "../shared/PageLoader";
 import Container from "../shared/Container";
+import { useEffect } from "react";
 
 const About = () => {
-  const { data, isLoading } = useGetAboutQuery();
-
+  const { data, isLoading, isSuccess, refetch } = useGetAboutQuery();
+  useEffect(() => {
+    if (isSuccess) {
+      refetch();
+    }
+  }, [isSuccess]);
   if (isLoading) {
     return <PageLoader />;
   }

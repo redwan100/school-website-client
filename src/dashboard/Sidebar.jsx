@@ -24,6 +24,12 @@ const links = [
   },
   {
     id: 343,
+    name: "add school info",
+    path: "/dashboard/add-schoolinfo",
+    icon: AiOutlineFilePdf,
+  },
+  {
+    id: 343,
     name: "add notice",
     path: "/dashboard/add-notice",
     icon: AiOutlineFilePdf,
@@ -72,6 +78,12 @@ const dashLink = [
     name: "teacher",
     path: "/dashboard/teacher",
     icon: LiaChalkboardTeacherSolid,
+  },
+  {
+    id: 34433,
+    name: "school info",
+    path: "/dashboard/school-info",
+    icon: AiOutlineFilePdf,
   },
   {
     id: 3443,

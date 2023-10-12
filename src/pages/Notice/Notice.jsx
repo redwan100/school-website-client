@@ -4,9 +4,15 @@ import { useGetNoticeQuery } from "../../redux/features/api/baseApi";
 import PageLoader from "../shared/PageLoader";
 import About from "../AboutUs/About";
 import AboutUs from "../AboutUs/AboutUs";
+import { useEffect } from "react";
 
 const Notice = () => {
-  const { data: notices, isLoading } = useGetNoticeQuery();
+  const { data: notices, isLoading, isSuccess, refetch } = useGetNoticeQuery();
+  useEffect(() => {
+    if (isSuccess) {
+      refetch();
+    }
+  }, [isSuccess]);
   if (isLoading) {
     return <PageLoader />;
   }

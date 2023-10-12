@@ -1,14 +1,17 @@
+import { useEffect } from "react";
 import { useGetResultQuery } from "../../redux/features/api/baseApi";
 import Container from "../shared/Container";
 import PageLoader from "../shared/PageLoader";
 import ResultsCard from "./ResultsCard";
 
 const Results = () => {
-  const {
-    data: results,
+  const { data: results, isSuccess, refetch, isLoading } = useGetResultQuery();
 
-    isLoading,
-  } = useGetResultQuery();
+  useEffect(() => {
+    if (isSuccess) {
+      refetch();
+    }
+  }, [isSuccess]);
 
   if (isLoading) {
     return <PageLoader />;

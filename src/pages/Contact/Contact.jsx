@@ -1,11 +1,16 @@
+import { useEffect } from "react";
 import { useGetCommunicationQuery } from "../../redux/features/api/baseApi";
 import Container from "../shared/Container";
 import PageLoader from "../shared/PageLoader";
 import toast from "react-hot-toast";
 
 const Contact = () => {
-  const { data, isLoading } = useGetCommunicationQuery();
-
+  const { data, isLoading, isSuccess, refetch } = useGetCommunicationQuery();
+  useEffect(() => {
+    if (isSuccess) {
+      refetch();
+    }
+  }, [isSuccess]);
   if (isLoading) {
     return <PageLoader />;
   }

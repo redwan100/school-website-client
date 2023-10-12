@@ -1,10 +1,17 @@
+import { useEffect } from "react";
 import { useGetAllImagesQuery } from "../redux/features/api/baseApi";
 import Container from "./shared/Container";
 import PageLoader from "./shared/PageLoader";
 import SectionTitle from "./shared/SectionTitle";
 
 const Gallery = () => {
-  const { data: photos, isLoading } = useGetAllImagesQuery();
+  const { data: photos, isLoading, isSuccess, refetch } = useGetAllImagesQuery();
+
+  useEffect(()=>{
+    if(isSuccess){
+      refetch()
+    }
+  },[isSuccess])
 
   if (isLoading) {
     return <PageLoader />;

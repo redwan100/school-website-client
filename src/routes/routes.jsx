@@ -26,6 +26,9 @@ import EduTrainingTable from "../components/Slider/dashboard/EduTraining/EduTrai
 import Training from "../pages/EducationAndTraining/Training";
 import AddTeacher from "../pages/dashboard/AddTeacher";
 import TeacherTable from "../components/Slider/dashboard/Teacher/TeacherTable";
+import Teachers from "../pages/Teacher/Teacher";
+import AddSchoolInfo from "../pages/dashboard/AddSchoolInfo";
+import SchoolInfoTable from "../components/Slider/dashboard/SchoolInfo/SchoolInfoTable";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "teacher",
+        element: <Teachers />,
       },
       {
         path: "notice",
@@ -76,6 +83,10 @@ const router = createBrowserRouter([
         element: <AddTeacher />,
       },
       {
+        path: "/dashboard/add-schoolinfo",
+        element: <AddSchoolInfo />,
+      },
+      {
         path: "/dashboard/add-notice",
         element: <AddNotice />,
       },
@@ -114,6 +125,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/student",
         element: <StudentTable />,
+      },
+      {
+        path: "/dashboard/school-info",
+        element: <SchoolInfoTable />,
       },
       {
         path: "/dashboard/notice",

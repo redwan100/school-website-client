@@ -7,6 +7,11 @@ const navmenu = [
     path: "/",
   },
   {
+    id: 24,
+    name: "Teachers",
+    path: "/teacher",
+  },
+  {
     id: 2,
     name: "notice",
     path: "/notice",

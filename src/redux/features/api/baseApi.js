@@ -42,6 +42,40 @@ export const baseApi = createApi({
     }),
 
     /* -------------------------------------------------------------------------- */
+    /*                            //TODO: SCHOOL INFORMATION SLICE                           */
+    /* -------------------------------------------------------------------------- */
+    getSchoolInfo: builder.query({
+      query: () => "/all-school-information",
+    }),
+
+    getSchoolInfoSingle: builder.query({
+      query: (id) => `/single-school-information/${id}`,
+    }),
+
+    createSchoolInfo: builder.mutation({
+      query: (formData) => ({
+        url: "/add-school-information",
+        method: "POST",
+        body: formData,
+      }),
+    }),
+
+    updateSchoolInfo: builder.mutation({
+      query: ({ id, formData }) => ({
+        url: `/update-school-information/${id}`,
+        method: "PATCH",
+        body: formData,
+      }),
+    }),
+
+    deleteSchoolInfo: builder.mutation({
+      query: (id) => ({
+        url: `/delete-school-information/${id}`,
+        method: "DELETE",
+      }),
+    }),
+
+    /* -------------------------------------------------------------------------- */
     /*                            //TODO: STUDENT SLICE                           */
     /* -------------------------------------------------------------------------- */
     getStudents: builder.query({
@@ -278,6 +312,11 @@ export const {
   useCreateTeacherMutation,
   useUpdateTeacherMutation,
   useDeleteTeacherMutation,
+  useGetSchoolInfoQuery,
+  useGetSchoolInfoSingleQuery,
+  useDeleteSchoolInfoMutation,
+  useUpdateSchoolInfoMutation,
+  useCreateSchoolInfoMutation,
   useGetStudentsQuery,
   useGetSingleStudentQuery,
   useUpdateStudentMutation,

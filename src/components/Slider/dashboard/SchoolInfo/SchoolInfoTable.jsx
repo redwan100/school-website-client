@@ -1,15 +1,15 @@
 import { useEffect } from "react";
+import { useGetSchoolInfoQuery } from "../../../../redux/features/api/baseApi";
 import PageLoader from "../../../../pages/shared/PageLoader";
-import { useGetTeachersQuery } from "../../../../redux/features/api/baseApi";
-import TeacherRow from "./TeacherRow";
+import SchoolInfoRow from "./SchoolInfoRow";
 
-const TeacherTable = () => {
+const SchoolInfoTable = () => {
   const {
-    data: teachers,
-    isLoading,
+    data: schoolInfo,
     refetch,
     isSuccess,
-  } = useGetTeachersQuery();
+    isLoading,
+  } = useGetSchoolInfoQuery();
 
   useEffect(() => {
     if (isSuccess) {
@@ -23,43 +23,44 @@ const TeacherTable = () => {
 
   return (
     <div>
-      {teachers && Array.isArray(teachers) && teachers.length > 0 ? (
+      {schoolInfo && Array.isArray(schoolInfo) && schoolInfo.length > 0 ? (
         <>
           <div className="overflow-x-auto bg-zinc-200 ">
             <table className="min-w-full divide-y divide-gray-200">
-              <thead className="bg-zinc-300 ">
+              <thead className="bg-stone-400 text-zinc-50">
                 <tr>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-left text-xs sm:text-base font-bold text-gray-500 uppercase tracking-wider"
+                    className="px-6 py-3 text-left text-xs sm:text-base font-bold  uppercase tracking-wider"
                   >
-                    Image
+                    logo
                   </th>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-left text-xs sm:text-base font-bold text-gray-500 uppercase tracking-wider"
+                    className="px-6 py-3 text-left text-xs sm:text-base font-bold  uppercase tracking-wider"
                   >
-                    Name
+                    Institute name
                   </th>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-left text-xs sm:text-base font-bold text-gray-500 uppercase tracking-wider"
+                    className="px-6 py-3 text-left text-xs sm:text-base font-bold  uppercase tracking-wider"
                   >
-                    Phone
+                    institute code
                   </th>
+
                   <th
                     scope="col"
-                    className="px-6 py-3 text-center text-xs sm:text-base font-bold text-gray-500 uppercase tracking-wider "
+                    className="px-6 py-3 text-center text-xs sm:text-base font-bold  uppercase tracking-wider "
                   >
                     Action
                   </th>
                 </tr>
               </thead>
               <tbody>
-                {teachers.map((teacher) => (
-                  <TeacherRow
-                    key={teacher._id}
-                    teacher={teacher}
+                {schoolInfo.map((school) => (
+                  <SchoolInfoRow
+                    key={school.id}
+                    school={school}
                     refetch={refetch}
                   />
                 ))}
@@ -78,4 +79,4 @@ const TeacherTable = () => {
   );
 };
 
-export default TeacherTable;
+export default SchoolInfoTable;

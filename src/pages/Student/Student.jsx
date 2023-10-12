@@ -1,11 +1,21 @@
+import { useEffect } from "react";
 import { useGetStudentsQuery } from "../../redux/features/api/baseApi";
 import Container from "../shared/Container";
 import PageLoader from "../shared/PageLoader";
 import StudentCard from "./StudentCard";
 
 const Student = () => {
-  const { data: students, isLoading } = useGetStudentsQuery();
-
+  const {
+    data: students,
+    isLoading,
+    isSuccess,
+    refetch,
+  } = useGetStudentsQuery();
+  useEffect(() => {
+    if (isSuccess) {
+      refetch();
+    }
+  }, [isSuccess]);
   if (isLoading) {
     return <PageLoader />;
   }
