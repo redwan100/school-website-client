@@ -3,12 +3,13 @@ import {
   useGetAboutQuery,
   useGetCommunicationQuery,
 } from "../../redux/features/api/baseApi";
+import PageLoader from "./PageLoader";
 
 const Footer = () => {
   const { data } = useGetCommunicationQuery();
   const { data: about, isLoading } = useGetAboutQuery();
   if (isLoading) {
-    return "Loading...";
+    return <PageLoader />;
   }
   console.log();
   return (
