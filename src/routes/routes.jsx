@@ -25,6 +25,7 @@ import AddEduTraining from "../pages/dashboard/AddEduTraining";
 import EduTrainingTable from "../components/Slider/dashboard/EduTraining/EduTrainingTable";
 import Training from "../pages/EducationAndTraining/Training";
 import AddTeacher from "../pages/dashboard/AddTeacher";
+import TeacherTable from "../components/Slider/dashboard/Teacher/TeacherTable";
 
 const router = createBrowserRouter([
   {
@@ -105,6 +106,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/gallery",
         element: <GalleryTable />,
+      },
+      {
+        path: "/dashboard/teacher",
+        element: <TeacherTable />,
       },
       {
         path: "/dashboard/student",

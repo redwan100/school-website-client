@@ -1,12 +1,13 @@
 import { useState } from "react";
-
+import { useCreateTeacherMutation } from "../../redux/features/api/baseApi";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 const AddTeacher = () => {
   const [formData, setFormData] = useState({
     name: "",
     image: null,
     phone: "",
     designation: "",
-    First_Date_of_joining: "",
     Date_of_joining: "",
     Date_of_MPO: "",
     Date_of_birth: "",
@@ -20,6 +21,9 @@ const AddTeacher = () => {
     M_Phil: "",
     PHD: "",
   });
+
+  const navigate = useNavigate();
+  const [createTeacher, { isLoading }] = useCreateTeacherMutation();
 
   const handleFileChange = (e) => {
     setFormData({
@@ -62,6 +66,13 @@ const AddTeacher = () => {
     formDataToSend.append("Masters", formData.Masters);
     formDataToSend.append("M_Phil", formData.M_Phil);
     formDataToSend.append("PHD", formData.PHD);
+    try {
+      await createTeacher(formDataToSend);
+      navigate("/dashboard/teacher");
+      toast.success("Teacher created successfully");
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <div className="max-w-screen-lg mx-auto border border-zinc-100  w-full ">
@@ -143,31 +154,13 @@ const AddTeacher = () => {
           <div className="mb-4">
             <label
               className="block text-primary-20/80 text-base font-bold mb-2"
-              htmlFor="phone"
-            >
-              First Date of joining
-            </label>
-            <input
-              className="appearance-none border rounded w-full py-2 px-3 text-primary-20/80 leading-tight focus:outline-none focus:shadow-outline"
-              type="text"
-              id="First_Date_of_joining"
-              name="First_Date_of_joining"
-              value={formData.First_Date_of_joining}
-              onChange={handleInputChange}
-              placeholder="First Date of joining"
-            />
-          </div>
-
-          <div className="mb-4">
-            <label
-              className="block text-primary-20/80 text-base font-bold mb-2"
-              htmlFor="phone"
+              htmlFor="Date_of_joining"
             >
               Date of joining
             </label>
             <input
               className="appearance-none border rounded w-full py-2 px-3 text-primary-20/80 leading-tight focus:outline-none focus:shadow-outline"
-              type="text"
+              type="date"
               id="Date_of_joining"
               name="Date_of_joining"
               value={formData.Date_of_joining}
@@ -184,7 +177,7 @@ const AddTeacher = () => {
             </label>
             <input
               className="appearance-none border rounded w-full py-2 px-3 text-primary-20/80 leading-tight focus:outline-none focus:shadow-outline"
-              type="text"
+              type="date"
               id="Date_of_MPO"
               name="Date_of_MPO"
               value={formData.Date_of_MPO}
@@ -202,7 +195,7 @@ const AddTeacher = () => {
             </label>
             <input
               className="appearance-none border rounded w-full py-2 px-3 text-primary-20/80 leading-tight focus:outline-none focus:shadow-outline"
-              type="text"
+              type="date"
               id="Date_of_birth"
               name="Date_of_birth"
               value={formData.Date_of_birth}
@@ -377,10 +370,10 @@ const AddTeacher = () => {
         {/* TODO: SUBMIT BUTTON */}
         <div className="flex items-center justify-between">
           <button
-            className="bg-primary-20/80 hover:bg-primary-20 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
+            className="bg-primary-10/80 hover:bg-primary-10 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
             type="submit"
           >
-            Add Teacher
+            {isLoading ? "Creating..." : "Add Teacher"}
           </button>
         </div>
       </form>

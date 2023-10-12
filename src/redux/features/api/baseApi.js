@@ -27,10 +27,10 @@ export const baseApi = createApi({
     }),
 
     updateTeacher: builder.mutation({
-      query: ({ id, formData }) => ({
+      query: ({ id, formDataToSend }) => ({
         url: `/update-teacher/${id}`,
         method: "PATCH",
-        body: formData,
+        body: formDataToSend,
       }),
     }),
 
@@ -273,6 +273,11 @@ export const baseApi = createApi({
 });
 
 export const {
+  useGetTeachersQuery,
+  useGetSingleTeacherQuery,
+  useCreateTeacherMutation,
+  useUpdateTeacherMutation,
+  useDeleteTeacherMutation,
   useGetStudentsQuery,
   useGetSingleStudentQuery,
   useUpdateStudentMutation,
