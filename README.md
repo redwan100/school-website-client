@@ -1,8 +1,27 @@
-# React + Vite
+##[LiveLink](https://school-website-ec2fd.web.app/)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+##[SourceCodeGithub](https://github.com/redwan100/school-website-client)
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+###Short description
+
+- This a school website
+- Total web page data dynamic
+- Admin control all data source. Add, delete update
+
+---
+
+## Technologies
+
+- Reactjs
+- Redux [state management]
+- Tailwind [ui design]
+- Headless ui [tailwind component]
+- react-hot-toast (show notification)
+
+---
+
+## Tools
+
+- firebase

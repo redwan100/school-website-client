@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { useCreateSchoolInfoMutation } from "../../redux/features/api/baseApi";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 const AddSchoolInfo = () => {
   const [instituteName, setInstituteName] = useState("");
   const [code, setCode] = useState("");
   const [logo, setLogo] = useState(null);
+
+  const navigate = useNavigate();
 
   const [createSchoolInfo] = useCreateSchoolInfoMutation();
 
@@ -30,6 +33,7 @@ const AddSchoolInfo = () => {
     try {
       await createSchoolInfo(formData);
       toast.success("successfully created");
+      navigate("/dashboard/school-info");
     } catch (error) {
       console.log(error);
     }

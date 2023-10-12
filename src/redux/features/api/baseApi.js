@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-
+const imgbbApiKey = "8349871c6d3da380cbb3fd97b96a5f14";
 export const baseApi = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
@@ -7,6 +7,16 @@ export const baseApi = createApi({
   }),
 
   endpoints: (builder) => ({
+    uploadImage: builder.mutation({
+      query: (formData) => ({
+        url: `https://api.imgbb.com/1/upload?key=${imgbbApiKey}`,
+        method: "POST",
+        body: formData,
+        headers: {
+          "content-type": "multipart/form-data",
+        },
+      }),
+    }),
     /* -------------------------------------------------------------------------- */
     /*                            //TODO: STUDENT SLICE                           */
     /* -------------------------------------------------------------------------- */
@@ -307,6 +317,7 @@ export const baseApi = createApi({
 });
 
 export const {
+  useUploadImageMutation,
   useGetTeachersQuery,
   useGetSingleTeacherQuery,
   useCreateTeacherMutation,
